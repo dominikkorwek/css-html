@@ -1,0 +1,53 @@
+:root{
+    --move: 0deg;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+}
+html{
+    height: 100%;
+}
+body{
+    height: 100%;
+    width: 100%;
+    align-content: center;
+    background-color: black;
+}
+
+
+button{
+    display: block;
+    margin: 0 auto;
+    position: relative;
+
+    width: 9rem;
+    height: 3rem;
+
+    background: grey;
+    border-radius: 4rem;
+    border: none;
+}
+
+button::before,button::after{
+    content: '';
+
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    border-radius: 4rem;
+    padding: 0.3rem;
+
+    position: absolute;
+    background-image: conic-gradient(from var(--move),red 25%,orange 60%,transparent 90%,red 100%);
+    z-index: -1;
+}
+button::after{
+    filter: blur(20px);
+    opacity: 0.8;
+}

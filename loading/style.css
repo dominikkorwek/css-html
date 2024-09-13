@@ -1,0 +1,32 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.loading{
+    height: 50px;
+    width: 50px;
+    border: 6px solid aqua;
+    box-shadow: 0 0 8px aqua, 0 0 8px aqua inset;
+    border-radius: 4px;
+    z-index: 10;
+    animation: loading 2s ease-in-out infinite;
+}
+
+@keyframes loading {
+    0%{
+        transform: rotateX(0) rotateY(0) rotateZ(0);
+    }
+    33%{
+        transform: rotateX(180deg) rotateY(0) rotateZ(0);
+
+    }
+    67%{
+        transform: rotateX(180deg) rotateY(180deg) rotateZ(0);
+    }
+    100%{
+        transform: rotateX(180deg) rotateY(180deg) rotateZ(180deg);
+    }
+}

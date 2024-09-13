@@ -1,0 +1,21 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+html{
+    height: 100%;
+}
+
+body{
+    align-content: center;
+    height: 100%;
+}
+
+.background{
+    margin: 0 auto;
+    width: 40rem;
+    height: 40rem;
+    background-image: radial-gradient(black 30%,white 31%,transparent 40%), url('universe.jpg');
+    background-size: cover;
+}
