@@ -1,3 +1,10 @@
+:root{
+    --text-color: white;
+    --background-color: black;
+    --gradient-color-1: #3700ff;
+    --gradient-color-2: fuchsia;
+}
+
 *{
     padding: 0;
     margin: 0;
@@ -12,7 +19,7 @@ body{
     height: 100vh;
     align-items: center;
     justify-content: center;
-    background-color: black;
+    background-color: grey;
 }
 @property --move {
     syntax: "<angle>";
@@ -25,22 +32,30 @@ button{
     height: 3rem;
     position: relative;
 
-    color: white;
+    color: var(--text-color);
     font: bold 18px 'Arial Rounded MT Bold';
-    background: black;
+    background: var(--background-color);
     border-radius: 4rem;
     border: none;
 
-    &:before,&:after{
+    &::before,&::after{
         content: '';
 
         width: 0;
         height: 0;
+        border-radius: 4rem;
+        padding: 0.3rem;
+        position: absolute;
+        z-index: -1;
 
         top: 50%;
         left: 50%;
         transform: translate(-50%,-50%);
-        z-index: -1;
+
+        background-image: conic-gradient(from var(--move), var(--gradient-color-1) 25%,var(--gradient-color-2) 75%, var(--gradient-color-1) 100%);
+        animation: 3s spinner-border linear infinite;
+
+        transition: .3s width, .3s height;
     }
 
 
@@ -48,19 +63,20 @@ button{
         &::before,&::after{
             width: 100%;
             height: 100%;
-            border-radius: 4rem;
-            padding: 0.3rem;
-            position: absolute;
 
-            background-image: conic-gradient(from var(--move), #3700ff 25%,fuchsia 75%, #3700ff 100%);
-            animation: 3s spinner-border linear infinite;
-            transition: all 4s;
+            transition: 1s width, 1s height;
         }
 
         &::after{
             filter: blur(30px);
-            opacity: 0.8;
+            opacity: .8;
         }
+    }
+
+    &:active{
+       &::before,&::after{
+           padding: 0;
+       }
     }
 }
 
