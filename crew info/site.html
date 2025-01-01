@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<div id="member-container">
+    <div class="radio-container">
+        <input type="radio" id="mechanika" name="team" value="mechanika" checked>
+        <label for="mechanika">⚙️ Mechanika</label>
+
+        <input type="radio" id="elektronika" name="team" value="elektronika">
+        <label for="elektronika">💡 Elektronika</label>
+    </div>
+
+    <div id="team-container" class="team-container"></div>
+
+    <script>
+        const teams = {
+            mechanika: [
+                { name: "miau maiu", role: "LIDER DZIAŁU MECHANIKI", img: "img.png" },
+                { name: "gowno", role: "WICELIDER DZIAŁU MECHANIKI", img: "img.png" },
+                { name: "gowno", role: "WICELIDER DZIAŁU MECHANIKI", img: "img.png" },
+                { name: "gowno", role: "WICELIDER DZIAŁU MECHANIKI", img: "img.png" },
+                { name: "gowno", role: "WICELIDER DZIAŁU MECHANIKI", img: "img.png" },
+                { name: "gowno", role: "WICELIDER DZIAŁU MECHANIKI", img: "img.png" },
+                { name: "gowno", role: "WICELIDER DZIAŁU MECHANIKI", img: "img.png" }
+
+            ],
+            elektronika: [
+                { name: "basd sr", role: "LIDER DZIAŁU ELEKTRONIKI", img: "img.png" },
+                { name: "aa aa", role: "WICELIDER DZIAŁU ELEKTRONIKI", img: "img.png" }
+            ]
+        };
+
+        function showTeam(team) {
+            const teamContainer = document.getElementById('team-container');
+            teamContainer.innerHTML = '';
+
+            teams[team].forEach(member => {
+                const memberDiv = document.createElement('div');
+                memberDiv.classList.add('team-member');
+                memberDiv.innerHTML = `
+                    <div class="image-container">
+                        <img src="${member.img}" alt="${member.name}">
+                        <h3>${member.name}</h3>
+                        <p>${member.role}</p>
+                    </div>
+                `;
+                teamContainer.appendChild(memberDiv);
+            });
+        }
+
+        document.querySelectorAll('input[name="team"]').forEach(radio => {
+            radio.addEventListener('change', (event) => {
+                showTeam(event.target.value);
+            });
+        });
+
+        showTeam('mechanika');
+    </script>
+</div>
+</body>
+</html>
